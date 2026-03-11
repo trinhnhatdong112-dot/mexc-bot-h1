@@ -1,0 +1,16 @@
+name: Auto Bot H1
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+      - run: pip install ccxt pandas pandas-ta requests
+      - run: python bot.py
+      
